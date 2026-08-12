@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <title>Ministry of Revenue: Valid Recipt</title>
+  <style>
+    body {
+      font-family: serif;
+      background: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      margin: 0;
+      color: #000;
+    }
+    h3 {
+      font-size: 1.15em;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .receipt-container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    p {
+      margin: 4px 0;
+      font-size: 1.05em;
+      line-height: 1.35;
+    }
+    .label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="receipt-container">
+    <h3>Ministry of Revenue: Valid Recipt</h3>
+
+    <p><span class="label">የደረሰኝ መለያ ቁጥር:</span> <span id="rNo">0001100</span></p>
+    <p><span class="label">የግብር ከፋይ መለያ ቁጥር:</span> <span id="tin">0072292412</span></p>
+    <p><span class="label">የደረሰኝ ዓይነት:</span> <span id="type">CASH SALES INVOICE/VAT</span></p>
+    <p><span class="label">የግብር ከፋይ ስም:</span> <span id="name">ዘካሪያስ ዳጤ ወ/ኪዳን</span></p>
+    <p><span class="label">የግብር ከፋይ ታክስ ማዕከል:</span> <span id="center">MERKATO NO. 2 - LIYU TAX CENTER</span></p>
+    <p><span class="label">የቫት/VAT/ መለያ ቁጥር:</span> <span id="vatNo">17943121275</span></p>
+    <p><span class="label">የቫት/VAT/ ቁጥር:</span> <span id="vat">3927001275</span></p>
+    <p><span class="label">የማተሚያ ቤት ስም:</span> <span id="press">BERHANENA SELAM PRINTING ENTERPRISE</span></p>
+  </div>
+
+  <script>
+    // Extract parameters dynamically from URL query string
+    const params = new URLSearchParams(window.location.search);
+    if(params.get('rNo')) document.getElementById('rNo').textContent = params.get('rNo');
+    if(params.get('tin')) document.getElementById('tin').textContent = params.get('tin');
+    if(params.get('type')) document.getElementById('type').textContent = params.get('type');
+    if(params.get('name')) document.getElementById('name').textContent = params.get('name');
+    if(params.get('center')) document.getElementById('center').textContent = params.get('center');
+    if(params.get('vatNo')) document.getElementById('vatNo').textContent = params.get('vatNo');
+    if(params.get('vat')) document.getElementById('vat').textContent = params.get('vat');
+    if(params.get('press')) document.getElementById('press').textContent = params.get('press');
+
+    // Register offline service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+</body>
+</html>
 
